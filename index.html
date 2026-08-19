@@ -167,10 +167,37 @@ h1 .accent{color:var(--purple)}
 <section class="section alt" id="pricing">
   <div class="wrap">
     <div class="center"><div class="eyebrow">Start free</div><h2 class="sectionTitle">Understand what you need before you pay.</h2><p class="sectionSub">The MVP lets people explore the process first. Paid plans unlock the launch package and ongoing operating tools.</p></div>
-    <div class="priceGrid" style="max-width:850px;margin:40px auto 0">
-      <div class="price"><h3>PAC Magic Launch</h3><div class="amount">$299</div><p>One-time launch package for getting organized.</p><ul><li>Guided committee setup</li><li>Structure recommendation</li><li>Personalized checklist</li><li>Initial filing preparation</li><li>Compliance calendar</li></ul><button class="secondary" style="width:100%" onclick="start()">Explore free first</button></div>
-      <div class="price featured"><h3>PAC Magic</h3><div class="amount">$49<span style="font-size:14px;color:#858c9d">/mo</span></div><p>For committees that want an ongoing action layer.</p><ul><li>Deadline alerts</li><li>Contribution & expenditure tracking</li><li>Filing preparation</li><li>Independent-expenditure workflows</li><li>Plain-English compliance status</li></ul><button class="primary" style="width:100%" onclick="start()">See the experience</button></div>
-    </div>
+<div class="priceGrid" style="max-width:850px;margin:40px auto 0">
+
+  <div class="price">
+    <h3>PAC Magic Launch</h3>
+    <div class="amount">$299</div>
+    <p>One-time launch package for getting organized.</p>
+    <ul>
+      <li>Guided committee setup</li>
+      <li>Structure recommendation</li>
+      <li>Personalized checklist</li>
+      <li>Initial filing preparation</li>
+      <li>Compliance calendar</li>
+    </ul>
+    <button class="primary" style="width:100%" onclick="startCheckout()">Get my Launch Package — $299</button>
+  </div>
+
+  <div class="price featured">
+    <h3>PAC Magic</h3>
+    <div class="amount">$49<span style="font-size:14px;color:#858c9d">/mo</span></div>
+    <p>For committees that want an ongoing action layer.</p>
+    <ul>
+      <li>Deadline alerts</li>
+      <li>Contribution & expenditure tracking</li>
+      <li>Filing preparation</li>
+      <li>Independent-expenditure workflows</li>
+      <li>Plain-English compliance status</li>
+    </ul>
+    <button class="primary" style="width:100%" onclick="start()">See the experience</button>
+  </div>
+
+</div>
   </div>
 </section>
 
@@ -305,6 +332,75 @@ function renderResults(){
  <div class="actions" style="justify-content:center;margin-top:24px"><button class="secondary" onclick="exitApp()">Return to PAC Magic</button></div>`;
 }
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function startCheckout(){
+  window.location.href = "https://buy.stripe.com/test_aFaaEZ4Tx6KV2Oneu61Jm00";
+}
+
+function renderPostPayment(){
+  document.getElementById("site").style.display="none";
+  document.getElementById("app").style.display="block";
+
+  document.querySelector(".appShell").innerHTML = `
+    <div class="appNav">
+      <div class="logo"><span class="spark">✦</span> PAC Magic</div>
+      <span class="progressText">Purchase complete</span>
+    </div>
+
+    <div class="postPay">
+      <div class="resultHero">
+        <div class="resultKicker">✦ Magic Launch</div>
+        <h2>You’re in. Your launch work starts now.</h2>
+        <p>Your $299 Magic Launch purchase is complete. Your personalized launch package is next.</p>
+      </div>
+
+      <div class="resultGrid">
+
+        <div class="downloadBox">
+          <h3>Your Launch Package includes</h3>
+          <p>Guided committee setup, a tailored structure recommendation, a personalized launch checklist, initial filing preparation, and a customized compliance calendar.</p>
+        </div>
+
+        <div class="resultCard">
+          <h3>WHAT HAPPENS NEXT</h3>
+
+          <div class="check">
+            <span class="checkMark">1</span>
+            <span>Review your personalized launch checklist.</span>
+          </div>
+
+          <div class="check">
+            <span class="checkMark">2</span>
+            <span>Confirm your committee structure and filing requirements.</span>
+          </div>
+
+          <div class="check">
+            <span class="checkMark">3</span>
+            <span>Prepare your initial filings and compliance calendar.</span>
+          </div>
+
+          <div class="check">
+            <span class="checkMark">4</span>
+            <span>Route anything uncertain for attorney review.</span>
+          </div>
+        </div>
+
+        <div class="resultCard">
+          <h3>IMPORTANT</h3>
+          <div class="notice">
+            PAC Magic organizes the work; it does not replace legal advice.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  `;
+
+  window.scrollTo(0,0);
+}
+
+if(new URLSearchParams(window.location.search).get("success")==="1"){
+  window.addEventListener("DOMContentLoaded",renderPostPayment);
+}
 </script>
 </body>
 </html>
