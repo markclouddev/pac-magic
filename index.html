@@ -1,3 +1,206 @@
+
+index(20260819-074945).html
+File
+
+
+
+Edit
+
+
+
+
+Edit
+
+
+
+
+Edit
+
+
+
+
+Edit
+
+
+
+
+Edit
+
+
+Pasted text.txt
+Document
+
+57bef246-4cb9-4db5-9aa3-04a0ec299af6.html
+File
+
+Pasted markdown.md
+File
+found it
+
+Pasted text(1).txt
+Document
+too nervous to find correct line. Here's what I've got now:
+
+
+Pasted text(2).txt
+Document
+check: 
+
+Pasted text(3).txt
+Document
+
+Pasted text(4).txt
+Document
+
+Pasted text(5).txt
+Document
+now in GitHub: 
+
+
+Pasted text(6).txt
+Document
+can you just make sure 
+
+
+Pasted text(7).txt
+Document
+not seeing that in the code. quick question - is there anything wrong with my pasting the entire body each time to ensure we're working on the same thing
+
+Yes — absolutely. In fact, for this project, I prefer that you paste the entire current index.html each time.
+It solves the exact problem we've been having: I can work from the actual current version, rather than trying to reconstruct what changed across several edits.
+
+I checked the full code you just pasted.
+
+And I can now see why you weren't finding the text: it is currently:
+
+<button class="primary" style="width:100%" onclick="startCheckout()">Get my Launch Package — $299</button>
+Here's what I recommend
+Yes, let's use the whole-file method from now on:
+You: paste/upload the entire current index.html
+Me: inspect it and give you the exact corrected full code
+You: replace everything in GitHub with that version
+Commit.
+
+No hunting for lines. No wondering which version we're working from.
+
+For this particular change
+I would change the Launch button to:
+<button class="primary" style="width:100%" onclick="start()">Build My Launch Plan — $299</button>
+That means:
+Build My Launch Plan — $299
+→ questionnaire
+→ personalized plan
+→ Get my Launch Package — $299
+→ Stripe
+
+And we leave the results-page Stripe button alone.
+
+If you want, I can now give you the complete corrected index.html based on this exact file, ready to replace the entire GitHub file.
+g
+Done. I updated the exact full index.html you just provided.
+Download the updated PAC Magic code
+
+The change is:
+
+Build My Launch Plan — $299
+→ 7-question questionnaire
+→ personalized launch plan
+→ Get my Launch Package — $299
+→ live Stripe checkout
+
+Everything else was left alone.
+
+Now in GitHub
+Open index.html
+Click Edit / pencil
+⌘A
+Open the downloaded file
+Copy all
+Paste into GitHub
+Commit changes
+From here on, yes: paste the whole current file whenever you want a change. That's much safer for us. 
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>PAC Magic ✦ — California political action, simplified.</title>
+<style>
+:root{
+  --ink:#182033;--muted:#6d7587;--line:#e9ecf2;--bg:#fff;
+  --purple:#6c4df6;--purple2:#8a70ff;--lav:#f3f0ff;
+  --mint:#e8fbf3;--mintInk:#167354;--peach:#fff1e9;--peachInk:#a94d24;
+  --yellow:#fff7d7;--yellowInk:#806400;--shadow:0 18px 55px rgba(32,37,64,.10);
+  --radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.04em;font-size:20px}
+.spark{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,#7b5cff,#b49cff);display:grid;place-items:center;color:#fff;font-size:17px;box-shadow:0 8px 22px rgba(108,77,246,.22)}
+.navlinks{display:flex;gap:26px;align-items:center;color:#697184;font-size:14px}
+.navlinks button{border:0;background:none;color:inherit}
+.navcta{border:0;background:var(--ink);color:#fff;border-radius:999px;padding:11px 17px;font-weight:700}
+.hero{padding:92px 0 80px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:520px;height:520px;right:-160px;top:-190px;background:radial-gradient(circle,#eeeaff 0,rgba(238,234,255,0) 68%);pointer-events:none}
+.heroGrid{display:grid;grid-template-columns:1.04fr .96fr;gap:64px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--lav);color:#6046dc;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+h1{font-size:clamp(48px,6.6vw,82px);line-height:.98;letter-spacing:-.065em;margin:20px 0 22px;max-width:760px}
+h1 .accent{color:var(--purple)}
+.lede{font-size:20px;line-height:1.55;color:var(--muted);max-width:620px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+
+pac-magic-updated.html
+HTML
+
+ok is this live because the purple buttons aren't on 
+Not yet — the file I just gave you is the corrected code, but GitHub/Vercel won't use it until you replace the GitHub index.html and commit it.
+If you're still seeing the old version with the purple buttons missing, do this:
+
+Go to GitHub → index.html
+Click the pencil/edit icon
+Press ⌘A
+Paste the contents of the updated file
+Click Commit changes
+Wait for Vercel to redeploy
+Refresh the live site with ⌘R
+Also, the purple buttons should still be there. We only changed the pricing button's text/function; we did not change the CSS.
+If you want, paste the current GitHub code here again after you commit, and I'll verify the exact live version before you test it.
+ok so now I copy and paste new from here to old over there
+Yes. Exactly.
+GitHub is the old version. The file I just made is the new version.
+
+Do this:
+
+GitHub → open index.html
+Click the pencil/edit icon
+Press ⌘A to select all the old code
+Open the new pac-magic-updated.html
+Copy all of its code
+Go back to GitHub
+Paste it over the old code
+Click Commit changes
+Then wait for Vercel to redeploy.
+Don't edit individual lines. Replace the entire file. That keeps us working from one known version.
+
+
+
+
+
+
+Library
+/
+pac-magic-updated.html
+
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -180,7 +383,7 @@ h1 .accent{color:var(--purple)}
       <li>Initial filing preparation</li>
       <li>Compliance calendar</li>
     </ul>
-    <button class="primary" style="width:100%" onclick="startCheckout()">Get my Launch Package — $299</button>
+    <button class="primary" style="width:100%" onclick="start()">Build My Launch Plan — $299</button>
   </div>
 
   <div class="price featured">
