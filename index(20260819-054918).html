@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<title>PAC Magic ✦ — California political action, simplified.</title>
+<style>
+:root{
+  --ink:#182033;--muted:#6d7587;--line:#e9ecf2;--bg:#fff;
+  --purple:#6c4df6;--purple2:#8a70ff;--lav:#f3f0ff;
+  --mint:#e8fbf3;--mintInk:#167354;--peach:#fff1e9;--peachInk:#a94d24;
+  --yellow:#fff7d7;--yellowInk:#806400;--shadow:0 18px 55px rgba(32,37,64,.10);
+  --radius:24px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.04em;font-size:20px}
+.spark{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,#7b5cff,#b49cff);display:grid;place-items:center;color:#fff;font-size:17px;box-shadow:0 8px 22px rgba(108,77,246,.22)}
+.navlinks{display:flex;gap:26px;align-items:center;color:#697184;font-size:14px}
+.navlinks button{border:0;background:none;color:inherit}
+.navcta{border:0;background:var(--ink);color:#fff;border-radius:999px;padding:11px 17px;font-weight:700}
+.hero{padding:92px 0 80px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:520px;height:520px;right:-160px;top:-190px;background:radial-gradient(circle,#eeeaff 0,rgba(238,234,255,0) 68%);pointer-events:none}
+.heroGrid{display:grid;grid-template-columns:1.04fr .96fr;gap:64px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--lav);color:#6046dc;border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+h1{font-size:clamp(48px,6.6vw,82px);line-height:.98;letter-spacing:-.065em;margin:20px 0 22px;max-width:760px}
+h1 .accent{color:var(--purple)}
+.lede{font-size:20px;line-height:1.55;color:var(--muted);max-width:620px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.primary,.secondary{border-radius:14px;padding:15px 20px;font-weight:800;border:1px solid transparent}
+.primary{background:var(--purple);color:#fff;box-shadow:0 12px 28px rgba(108,77,246,.24)}
+.secondary{background:#fff;border-color:var(--line);color:var(--ink)}
+.trust{display:flex;gap:16px;flex-wrap:wrap;color:#777f90;font-size:13px;margin-top:18px}
+.flowCard{background:#fbfbfe;border:1px solid var(--line);border-radius:30px;padding:25px;box-shadow:var(--shadow)}
+.flowTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.flowLabel{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#858da0}
+.dot{width:9px;height:9px;border-radius:50%;background:#65d3a9;box-shadow:0 0 0 5px #e5faf1}
+.flowSteps{display:grid;gap:12px}
+.flowStep{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;align-items:center;gap:14px}
+.flowStep .icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:900}
+.i1{background:#eeeaff;color:#6249e4}.i2{background:#fff4cf;color:#8b6b00}.i3{background:#e7f8f1;color:#177556}
+.flowStep b{display:block;font-size:15px}.flowStep span{display:block;color:#7b8394;font-size:12px;margin-top:3px}
+.arrow{margin-left:auto;color:#b2b7c3}
+.section{padding:92px 0}
+.section.alt{background:#fafbfe}
+.center{text-align:center}
+.sectionTitle{font-size:clamp(34px,4.5vw,55px);letter-spacing:-.055em;line-height:1.03;margin:10px auto 16px;max-width:780px}
+.sectionSub{color:var(--muted);font-size:18px;line-height:1.55;max-width:690px;margin:0 auto}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:42px}
+.card{border:1px solid var(--line);border-radius:22px;padding:25px;background:#fff}
+.cardIcon{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:20px;font-size:19px}
+.card h3{margin:0 0 8px;font-size:19px;letter-spacing:-.025em}.card p{margin:0;color:var(--muted);line-height:1.55;font-size:14px}
+.process{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:42px}
+.process .card{position:relative;overflow:hidden}
+.num{font-size:12px;font-weight:900;color:#6d4df6}
+.quote{margin-top:60px;background:var(--ink);color:#fff;border-radius:28px;padding:36px;display:flex;justify-content:space-between;gap:30px;align-items:center}
+.quote p{font-size:25px;line-height:1.25;letter-spacing:-.035em;margin:0;max-width:760px}.quote span{color:#aeb6c7;font-size:13px;white-space:nowrap}
+.ctaBand{background:linear-gradient(135deg,#f0edff,#fff);border:1px solid #e7e1ff;border-radius:30px;padding:45px;text-align:center}
+.ctaBand h2{font-size:42px;letter-spacing:-.055em;margin:0 0 12px}.ctaBand p{color:var(--muted);margin:0 auto 24px;max-width:600px;line-height:1.5}
+.footer{padding:30px 0 50px;color:#858c9c;font-size:12px;display:flex;justify-content:space-between;gap:20px}
+.legal{max-width:760px;line-height:1.55}
+
+/* App */
+#app{display:none;min-height:100vh;background:#fbfbfd}
+.appShell{width:min(760px,calc(100% - 30px));margin:auto;padding:22px 0 70px}
+.appNav{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.backBtn{border:0;background:none;color:#737b8c;font-weight:700;padding:8px 0}
+.progressWrap{display:flex;align-items:center;gap:12px}.progressText{font-size:12px;color:#777f90;font-weight:800}.progress{height:6px;background:#e9ebf2;border-radius:99px;overflow:hidden;flex:1;max-width:220px}.progress i{display:block;height:100%;background:linear-gradient(90deg,#6c4df6,#a28cff);border-radius:99px;width:0}
+.questionCard{background:#fff;border:1px solid var(--line);border-radius:28px;padding:clamp(28px,6vw,55px);box-shadow:0 22px 70px rgba(27,31,55,.08)}
+.qKicker{color:#6c4df6;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.qTitle{font-size:clamp(34px,6vw,52px);line-height:1.04;letter-spacing:-.055em;margin:12px 0 12px}.qHelp{color:var(--muted);line-height:1.5;margin:0 0 28px;max-width:620px}
+.optionGrid{display:grid;gap:11px}
+.option{border:1px solid var(--line);background:#fff;border-radius:17px;padding:17px 18px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:14px;transition:.16s}
+.option:hover{border-color:#c9c0ff;transform:translateY(-1px);box-shadow:0 8px 22px rgba(31,34,58,.06)}
+.option strong{font-size:15px}.option small{display:block;color:#858c9d;margin-top:3px}.chev{color:#b5bac5}
+.textInput{width:100%;border:1px solid #dfe3eb;border-radius:15px;padding:16px 17px;font-size:17px;outline:none}.textInput:focus{border-color:#a99aff;box-shadow:0 0 0 4px #f0edff}
+.money{position:relative}.money span{position:absolute;left:17px;top:16px;color:#8a91a0;font-size:17px}.money input{padding-left:32px}
+.nextRow{display:flex;justify-content:space-between;align-items:center;margin-top:25px}.quiet{font-size:12px;color:#8a91a0}
+.continue{border:0;background:var(--purple);color:#fff;border-radius:14px;padding:14px 19px;font-weight:800}
+.magic{margin:14px 0 22px;background:linear-gradient(135deg,#f1efff,#fff);border:1px solid #e5e0ff;border-radius:18px;padding:14px 16px;color:#5943c9;font-size:13px;font-weight:700}
+.info{margin-top:20px;padding:15px 16px;background:#f7f8fb;border-radius:15px;color:#697184;font-size:12px;line-height:1.5}
+.resultHero{padding:45px 0 25px}.resultKicker{color:#6046dc;font-size:12px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.resultHero h2{font-size:clamp(42px,7vw,66px);line-height:1;letter-spacing:-.06em;margin:12px 0}.resultHero p{color:var(--muted);font-size:18px;line-height:1.5}
+.resultGrid{display:grid;gap:14px}.resultCard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:23px}.resultCard h3{margin:0 0 15px;font-size:14px;letter-spacing:.02em}.pill{display:inline-flex;background:var(--mint);color:var(--mintInk);border-radius:999px;padding:7px 10px;font-size:12px;font-weight:800}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:12px}.meta div{background:#f8f9fb;border-radius:14px;padding:14px}.meta span{display:block;color:#858c9d;font-size:11px;margin-bottom:4px}.meta b{font-size:14px}
+.check{display:flex;gap:11px;align-items:flex-start;padding:11px 0;border-bottom:1px solid #f0f1f5;font-size:14px}.check:last-child{border-bottom:0}.checkMark{width:22px;height:22px;border-radius:7px;background:#e7f8f1;color:#167354;display:grid;place-items:center;font-size:12px;font-weight:900;flex:none}
+.notice{background:var(--yellow);color:#715b00;border-radius:16px;padding:15px;font-size:13px;line-height:1.5}
+.priceGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.price{border:1px solid var(--line);border-radius:20px;padding:22px;background:#fff}.price.featured{border-color:#cfc7ff;box-shadow:0 12px 30px rgba(108,77,246,.10)}.price h3{margin:0}.price .amount{font-size:34px;letter-spacing:-.05em;margin:10px 0}.price p{font-size:13px;color:var(--muted);line-height:1.5}.price ul{padding-left:17px;color:#697184;font-size:13px;line-height:1.8}
+.source{font-size:11px;color:#858c9d;line-height:1.55}.source a{color:#6046dc}
+@media(max-width:820px){.heroGrid{grid-template-columns:1fr;gap:35px}.cards,.process{grid-template-columns:1fr}.navlinks{display:none}.quote{display:block}.quote span{display:block;margin-top:18px}.footer{display:block}.footer .legal{margin-top:10px}.priceGrid{grid-template-columns:1fr}}
+@media(max-width:520px){.wrap{width:min(100% - 28px,1160px)}.hero{padding:55px 0}.section{padding:65px 0}.actions>*{width:100%}.heroGrid{gap:25px}.flowCard{padding:18px}.meta{grid-template-columns:1fr}.questionCard{padding:25px 20px}.appShell{width:min(100% - 20px,760px)}}
+</style>
+</head>
+<body>
+
+<div id="site">
+<header class="wrap nav">
+  <div class="logo"><span class="spark">✦</span> PAC Magic</div>
+  <nav class="navlinks">
+    <button onclick="scrollToId('how')">How it works</button>
+    <button onclick="scrollToId('pricing')">Pricing</button>
+    <button class="navcta" onclick="start()">Start free</button>
+  </nav>
+</header>
+
+<main>
+<section class="wrap hero">
+  <div class="heroGrid">
+    <div>
+      <div class="eyebrow">✦ California political action, simplified.</div>
+      <h1>Create a political committee <span class="accent">without becoming a campaign-finance expert.</span></h1>
+      <p class="lede">Tell PAC Magic what you’re trying to accomplish. We translate your answers into the steps, documents and deadlines you need.</p>
+      <div class="actions">
+        <button class="primary" onclick="start()">✦ Start with PAC Magic</button>
+        <button class="secondary" onclick="scrollToId('how')">See how it works</button>
+      </div>
+      <div class="trust"><span>California-first</span><span>Plain English</span><span>Built for humans</span><span>Nonpartisan</span></div>
+    </div>
+    <div class="flowCard">
+      <div class="flowTop"><span class="flowLabel">The PAC Magic approach</span><span class="dot"></span></div>
+      <div class="flowSteps">
+        <div class="flowStep"><div class="icon i1">1</div><div><b>Your goal</b><span>“I want to influence this election.”</span></div><span class="arrow">→</span></div>
+        <div class="flowStep"><div class="icon i2">✦</div><div><b>PAC Magic</b><span>Quietly maps the complexity.</span></div><span class="arrow">→</span></div>
+        <div class="flowStep"><div class="icon i3">✓</div><div><b>Your action plan</b><span>Know exactly what to do next.</span></div><span class="arrow">→</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="how">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow">No bureaucracy required</div>
+      <h2 class="sectionTitle">You don’t need to know the rules. That’s the point.</h2>
+      <p class="sectionSub">PAC Magic asks simple questions, narrows the possibilities and turns campaign-finance complexity into a small set of understandable actions.</p>
+    </div>
+    <div class="cards">
+      <div class="card"><div class="cardIcon" style="background:#eeeaff;color:#6046dc">?</div><h3>Simple questions</h3><p>No form numbers. No legal vocabulary. Just straightforward questions about what you want to accomplish.</p></div>
+      <div class="card"><div class="cardIcon" style="background:#fff4cf;color:#806400">✦</div><h3>Smart translation</h3><p>Your answers are mapped to a preliminary committee structure, jurisdiction and launch workflow.</p></div>
+      <div class="card"><div class="cardIcon" style="background:#e7f8f1;color:#167354">→</div><h3>Clear next steps</h3><p>Instead of “Form 410,” you get “Here’s what needs to happen, why, and who should review it.”</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow">The magic moment</div>
+      <h2 class="sectionTitle">Complexity in. Simplicity out.</h2>
+      <p class="sectionSub">The first goal is not to automate every filing. It is to make a first-time organizer feel like someone finally translated the system for them.</p>
+    </div>
+    <div class="process">
+      <div class="card"><div class="num">01</div><h3>Tell us what you want to do</h3><p>Support a candidate, influence a ballot measure, make independent expenditures—or tell us you’re not sure.</p></div>
+      <div class="card"><div class="num">02</div><h3>We narrow it down</h3><p>Questions adapt to your answers so you only see what matters to your situation.</p></div>
+      <div class="card"><div class="num">03</div><h3>Get your launch plan</h3><p>See a preliminary structure, what information is missing, what needs review, and the next actions.</p></div>
+    </div>
+    <div class="quote"><p>“Wait… it figured all of that out for me?”</p><span>The reaction we are designing for.</span></div>
+  </div>
+</section>
+
+<section class="section alt" id="pricing">
+  <div class="wrap">
+    <div class="center"><div class="eyebrow">Start free</div><h2 class="sectionTitle">Understand what you need before you pay.</h2><p class="sectionSub">The MVP lets people explore the process first. Paid plans unlock the launch package and ongoing operating tools.</p></div>
+    <div class="priceGrid" style="max-width:850px;margin:40px auto 0">
+      <div class="price"><h3>PAC Magic Launch</h3><div class="amount">$299</div><p>One-time launch package for getting organized.</p><ul><li>Guided committee setup</li><li>Structure recommendation</li><li>Personalized checklist</li><li>Initial filing preparation</li><li>Compliance calendar</li></ul><button class="secondary" style="width:100%" onclick="start()">Explore free first</button></div>
+      <div class="price featured"><h3>PAC Magic</h3><div class="amount">$49<span style="font-size:14px;color:#858c9d">/mo</span></div><p>For committees that want an ongoing action layer.</p><ul><li>Deadline alerts</li><li>Contribution & expenditure tracking</li><li>Filing preparation</li><li>Independent-expenditure workflows</li><li>Plain-English compliance status</li></ul><button class="primary" style="width:100%" onclick="start()">See the experience</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="ctaBand">
+      <h2>Ready to make PAC formation feel different?</h2>
+      <p>Start with the question that matters most: what are you actually trying to accomplish?</p>
+      <button class="primary" onclick="start()">✦ Start with PAC Magic</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="wrap footer">
+  <div>© 2026 PAC Magic ✦</div>
+  <div class="legal">PAC Magic is a prototype concept and is not legal advice. Campaign-finance requirements can depend on facts, timing and jurisdiction. The prototype uses a limited set of publicly available California FPPC guidance to demonstrate the product experience; production determinations should be source-traceable and reviewed when appropriate.</div>
+</footer>
+</div>
+
+<div id="app">
+  <div class="appShell">
+    <div class="appNav">
+      <button class="backBtn" onclick="exitApp()">← PAC Magic</button>
+      <div class="progressWrap"><span class="progressText" id="progressText">1 of 7</span><div class="progress"><i id="progressBar"></i></div></div>
+    </div>
+    <div id="questionMount"></div>
+  </div>
+</div>
+
+<script>
+const state={answers:{},step:0};
+const questions=[
+ {key:"goal",title:"What are you trying to accomplish?",help:"Start with the outcome. We’ll translate the campaign-finance details later.",options:[
+  ["candidate_support","Support a candidate","Help elect or support a candidate"],
+  ["candidate_oppose","Oppose a candidate","Help defeat or oppose a candidate"],
+  ["measure_support","Support a ballot measure","Support a California ballot measure"],
+  ["measure_oppose","Oppose a ballot measure","Oppose a California ballot measure"],
+  ["independent","Make independent expenditures","Spend independently to influence a candidate or measure"],
+  ["unsure","I’m not sure yet","That’s okay. We can help narrow it down"]
+ ]},
+ {key:"target",title:"What are you trying to influence?",help:"A candidate, a ballot measure, or something broader?",options:[
+  ["candidate","A candidate","A specific person running for office"],
+  ["measure","A ballot measure","A specific proposition or local measure"],
+  ["multiple","Multiple candidates or measures","More than one election target"],
+  ["unsure","I’m not sure yet","We’ll keep it simple"]
+ ]},
+ {key:"area",title:"Where will the activity happen?",help:"This helps us understand the likely filing jurisdiction.",options:[
+  ["state","Across California","Statewide or multiple local areas"],
+  ["county","Mostly within one county","One county is the main focus"],
+  ["city","Mostly within one city","One city is the main focus"],
+  ["unsure","I’m not sure yet","We’ll flag this for review"]
+ ]},
+ {key:"funding",title:"How will the activity be funded?",help:"For this first prototype, choose the closest description.",options:[
+  ["contributions","Contributions from supporters","Other people or organizations will give money"],
+  ["own","Our own organizational or personal funds","The organizer will use its own funds"],
+  ["mixed","A mix","There may be both contributions and organizational funds"],
+  ["unsure","I’m not sure yet","We’ll identify what needs review"]
+ ]},
+ {key:"spend",title:"About how much do you expect to spend?",help:"An estimate is enough. You can change it later.",input:"money",options:[
+  ["under2k","Under $2,000"],["2to10k","$2,000–$10,000"],["10to50k","$10,000–$50,000"],["over50k","More than $50,000"]
+ ]},
+ {key:"timing",title:"When do you expect activity to begin?",help:"A rough timeframe is fine.",options:[
+  ["now","As soon as possible"],["soon","Within the next 90 days"],["later","More than 90 days from now"],["unsure","I’m not sure yet"]
+ ]},
+ {key:"name",title:"What should we call your organization?",help:"A working name is fine. You can change it later.",input:"text",placeholder:"Example: Inland Communities for Better Roads"}
+];
+
+function start(){document.getElementById("site").style.display="none";document.getElementById("app").style.display="block";state.step=0;state.answers={};renderQuestion();}
+function exitApp(){document.getElementById("app").style.display="none";document.getElementById("site").style.display="block";window.scrollTo(0,0)}
+function scrollToId(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth"});}
+function setProgress(){let n=questions.length;document.getElementById("progressText").textContent=`${state.step+1} of ${n}`;document.getElementById("progressBar").style.width=((state.step)/n*100)+"%";}
+function magic(text){return `<div class="magic">✦ ${text}</div>`}
+function renderQuestion(){
+ setProgress(); const q=questions[state.step];
+ let html=`<div class="questionCard"><div class="qKicker">PAC Magic</div><h1 class="qTitle">${q.title}</h1><p class="qHelp">${q.help}</p>`;
+ if(state.step===1 && state.answers.goal==="unsure") html+=magic("That’s okay. We can figure this out together.");
+ if(state.step===2) html+=magic("We’re narrowing this down. You don’t need to know the filing jurisdiction.");
+ if(state.step===3 && state.answers.goal==="independent") html+=magic("Independent-expenditure questions can get technical. We’ll keep the language human.");
+ if(q.options){
+  html+=`<div class="optionGrid">`;
+  q.options.forEach(([v,label,sub])=>html+=`<button class="option" onclick="choose('${v}')"><span><strong>${label}</strong>${sub?`<small>${sub}</small>`:""}</span><span class="chev">→</span></button>`);
+  html+=`</div>`;
+ } else if(q.input==="money"){
+  html+=`<div class="money"><span>$</span><input class="textInput" id="freeInput" inputmode="decimal" placeholder="25,000"></div>`;
+ } else {
+  html+=`<input class="textInput" id="freeInput" placeholder="${q.placeholder||""}" autocomplete="organization">`;
+ }
+ html+=`<div class="nextRow"><span class="quiet">Saved automatically in this demo</span>${q.input?`<button class="continue" onclick="continueInput()">Continue →</button>`:""}</div>`;
+ if(state.step===2) html+=`<div class="info"><b>Why we’re asking:</b> committee type and filing location can depend on where the activity is focused. PAC Magic will surface uncertainty instead of guessing.</div>`;
+ html+=`</div>`;document.getElementById("questionMount").innerHTML=html;
+}
+function choose(v){state.answers[questions[state.step].key]=v;next();}
+function continueInput(){let val=document.getElementById("freeInput").value.trim();if(!val)return;state.answers[questions[state.step].key]=val;next();}
+function next(){if(state.step<questions.length-1){state.step++;renderQuestion()}else renderResults();window.scrollTo(0,0);}
+function backStep(){if(state.step>0){state.step--;renderQuestion()}else exitApp();}
+function renderResults(){
+ document.getElementById("progressText").textContent="Ready";document.getElementById("progressBar").style.width="100%";
+ const a=state.answers; const goal=a.goal;
+ let structure="General purpose recipient committee";
+ let rationale="Your answers suggest a committee designed to receive contributions and support or oppose candidates or measures.";
+ let source="https://www.fppc.ca.gov/learn/campaign-rules/";
+ let flags=[];
+ if(goal==="independent"){
+   structure="Independent expenditure committee";
+   rationale="You described spending independently to support or oppose a candidate or ballot measure. That points toward the independent-expenditure path, subject to the facts and timing.";
+   source="https://www.fppc.ca.gov/learn/campaign-rules/when-and-where-to-file-campaign-statements/general-purpose-committees/";
+   flags=["Confirm the expenditure is truly independent","Confirm the affected candidate or measure and jurisdiction","Confirm timing against the election calendar"];
+ } else if(goal==="measure_support"||goal==="measure_oppose"){
+   structure="Ballot-measure committee pathway";
+   rationale="You’re organizing around a ballot measure. The exact committee and filing path depends on the measure, jurisdiction, funding and activity.";
+   source="https://www.fppc.ca.gov/learn/campaign-rules/when-and-where-to-file-campaign-statements/ballot-measure-committees/";
+   flags=["Identify the measure and election","Confirm the filing jurisdiction","Confirm funding and committee status"];
+ } else {
+   flags=["Confirm committee purpose and targets","Confirm filing jurisdiction","Confirm funding structure"];
+ }
+ const name=a.name||"Your organization";
+ const areaLabel={state:"California",county:"One county",city:"One city",unsure:"Needs confirmation"}[a.area]||"Needs confirmation";
+ document.getElementById("questionMount").innerHTML=`
+ <div class="resultHero"><div class="resultKicker">✦ Your preliminary launch plan</div><h2>You’re ready for the next step.</h2><p>PAC Magic turned your answers into a starting point. The point is not to hide uncertainty—it’s to show you exactly where it exists.</p></div>
+ <div class="resultGrid">
+  <div class="resultCard"><h3>YOUR COMMITTEE</h3><div class="meta"><div><span>Name</span><b>${escapeHtml(name)}</b></div><div><span>Likely pathway</span><b>${structure}</b></div><div><span>Jurisdiction focus</span><b>${areaLabel}</b></div><div><span>Status</span><b><span class="pill">Ready for review</span></b></div></div><div class="info"><b>Why this recommendation?</b><br>${rationale}</div></div>
+  <div class="resultCard"><h3>YOUR LAUNCH PACKAGE</h3>
+   ${["Committee structure recommendation","Registration information to gather","Treasurer / responsible-officer information","Initial filing preparation","Personalized compliance checklist","Reporting-calendar setup","Disclosure and independent-expenditure review"].map(x=>`<div class="check"><span class="checkMark">✓</span><span>${x}</span></div>`).join("")}
+  </div>
+  <div class="resultCard"><h3>REVIEW BEFORE YOU FILE</h3><div class="notice">PAC Magic is not making a legal determination here. These are the items your answers suggest should be confirmed before relying on the plan.</div>
+   <div style="margin-top:12px">${flags.map(x=>`<div class="check"><span class="checkMark" style="background:#fff4cf;color:#806400">!</span><span>${x}</span></div>`).join("")}</div>
+  </div>
+  <div class="resultCard"><h3>WHAT HAPPENS NEXT</h3><div class="actions" style="margin-top:0"><button class="primary" onclick="showLaunchPackage()">✦ Open my launch package</button><button class="secondary" onclick="requestReview()">Request attorney review</button></div></div>
+  <div class="resultCard"><h3>AUTHORITATIVE SOURCE</h3><div class="source">This prototype uses California FPPC guidance for the concepts demonstrated above. Production rules should be versioned, traceable and independently maintained.<br><br><a href="${source}" target="_blank" rel="noopener">Open the relevant FPPC guidance →</a></div></div>
+ </div>
+ <div class="actions" style="justify-content:center;margin-top:24px"><button class="secondary" onclick="exitApp()">Return to PAC Magic</button></div>`;
+}
+function showLaunchPackage(){
+ const a=state.answers; const name=escapeHtml(a.name||"Your organization");
+ const goalLabel={independent:"Make independent expenditures",measure_support:"Support a ballot measure",measure_oppose:"Oppose a ballot measure",candidate_support:"Support a candidate",candidate_oppose:"Oppose a candidate",unsure:"Still determining the goal"}[a.goal]||"Political activity";
+ const structure=a.goal==="independent"?"Independent expenditure committee":(a.goal==="measure_support"||a.goal==="measure_oppose"?"Ballot-measure committee pathway":"General-purpose committee pathway");
+ const items=[
+  ["Committee profile","Your purpose, organization and jurisdiction information organized for the setup process."],
+  ["Treasurer checklist","Information and confirmations the responsible officer should review before activity begins."],
+  ["Registration preparation","The information PAC Magic identified as relevant to the initial California registration workflow."],
+  ["Compliance checklist","The actions suggested by your answers, separated from items that require professional confirmation."],
+  ["Reporting calendar","A starting calendar that can be refined once filing jurisdiction, committee status and activity are confirmed."],
+  ["Disclosure review","A plain-English review of communication and independent-expenditure disclosure considerations."],
+ ];
+ document.getElementById("questionMount").innerHTML=`
+ <div class="resultHero"><div class="resultKicker">✦ Your launch package</div><h2>Everything in one place.</h2><p>PAC Magic has organized what you told us into a practical launch plan. This is a preparation tool—not a legal opinion.</p></div>
+ <div class="resultGrid">
+  <div class="resultCard"><h3>YOUR COMMITTEE AT A GLANCE</h3><div class="meta"><div><span>Organization</span><b>${name}</b></div><div><span>Goal</span><b>${goalLabel}</b></div><div><span>Likely pathway</span><b>${structure}</b></div><div><span>Readiness</span><b><span class="pill">Ready for review</span></b></div></div></div>
+  <div class="resultCard"><h3>YOUR PACKAGE</h3>${items.map((it,i)=>`<div class="check"><span class="checkMark">✓</span><span><b>${it[0]}</b><br><span style="color:#7b8394;font-size:12px">${it[1]}</span></span></div>`).join("")}</div>
+  <div class="resultCard"><h3>YOUR FIRST ACTIONS</h3><div class="check"><span class="checkMark">1</span><span><b>Confirm your committee purpose</b><br><span style="color:#7b8394;font-size:12px">Make sure the activity you described matches the pathway above.</span></span></div><div class="check"><span class="checkMark">2</span><span><b>Confirm the responsible officer</b><br><span style="color:#7b8394;font-size:12px">Have the person responsible review the setup information.</span></span></div><div class="check"><span class="checkMark">3</span><span><b>Review filing jurisdiction and timing</b><br><span style="color:#7b8394;font-size:12px">These depend on facts that PAC Magic should not guess.</span></span></div></div>
+  <div class="resultCard"><h3>ITEMS THAT DESERVE PROFESSIONAL REVIEW</h3><div class="notice">PAC Magic deliberately surfaces uncertainty instead of hiding it. Confirm the committee classification, jurisdiction, timing and any activity-specific reporting or disclosure requirements before filing or spending.</div><div class="actions"><button class="primary" onclick="requestReview()">Request professional review</button><button class="secondary" onclick="window.print()">Print / save this package</button></div></div>
+  <div class="resultCard"><h3>PAC MAGIC POSITION</h3><div class="source">PAC Magic helps identify, prepare and manage campaign-finance requirements. It is not legal advice and does not replace the legal responsibilities of the committee, treasurer or professional advisors.</div></div>
+ </div>
+ <div class="actions" style="justify-content:center;margin-top:24px"><button class="secondary" onclick="finish()">← Back to recommendation</button></div>`;
+}
+function requestReview(){alert("Professional-review routing is the next service layer. Your review items have been identified and are ready to hand off.");}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+</script>
+</body>
+</html>
