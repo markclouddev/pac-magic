@@ -66,7 +66,7 @@ h1 .accent{color:var(--purple)}
 .ctaBand h2{font-size:42px;letter-spacing:-.055em;margin:0 0 12px}.ctaBand p{color:var(--muted);margin:0 auto 24px;max-width:600px;line-height:1.5}
 .footer{padding:30px 0 50px;color:#858c9c;font-size:12px;display:flex;justify-content:space-between;gap:20px}
 .legal{max-width:760px;line-height:1.55}
-
+ 
 /* App */
 #app{display:none;min-height:100vh;background:#fbfbfd}
 .appShell{width:min(760px,calc(100% - 30px));margin:auto;padding:22px 0 70px}
@@ -295,45 +295,128 @@ function continueInput(){let val=document.getElementById("freeInput").value.trim
 function next(){if(state.step<questions.length-1){state.step++;renderQuestion()}else renderResults();window.scrollTo(0,0);}
 function backStep(){if(state.step>0){state.step--;renderQuestion()}else exitApp();}
 function renderResults(){
- document.getElementById("progressText").textContent="Ready";document.getElementById("progressBar").style.width="100%";
- const a=state.answers; const goal=a.goal;
- let structure="General purpose recipient committee";
- let rationale="Your answers suggest a committee designed to receive contributions and support or oppose candidates or measures.";
- let source="https://www.fppc.ca.gov/learn/campaign-rules/";
+ const a=state.answers;
+ let structure="General-purpose committee pathway";
+ let rationale="Your answers suggest a general committee setup. The exact committee type and filing path depend on the purpose, jurisdiction, funding and activity.";
+ let source="https://www.fppc.ca.gov/learn/campaign-rules/when-and-where-to-file-campaign-statements/general-purpose-committees/";
  let flags=[];
- if(goal==="independent"){
-   structure="Independent expenditure committee";
+
+ if(a.goal==="independent"){
+   structure="Independent-expenditure pathway";
    rationale="You described spending independently to support or oppose a candidate or ballot measure. That points toward the independent-expenditure path, subject to the facts and timing.";
-   source="https://www.fppc.ca.gov/learn/campaign-rules/when-and-where-to-file-campaign-statements/general-purpose-committees/";
-   flags=["Confirm the expenditure is truly independent","Confirm the affected candidate or measure and jurisdiction","Confirm timing against the election calendar"];
- } else if(goal==="measure_support"||goal==="measure_oppose"){
+   flags=[
+     "Confirm the expenditure is truly independent",
+     "Confirm the affected candidate or measure and jurisdiction",
+     "Confirm timing against the election calendar"
+   ];
+ } else if(a.goal==="measure_support"||a.goal==="measure_oppose"){
    structure="Ballot-measure committee pathway";
    rationale="You’re organizing around a ballot measure. The exact committee and filing path depends on the measure, jurisdiction, funding and activity.";
    source="https://www.fppc.ca.gov/learn/campaign-rules/when-and-where-to-file-campaign-statements/ballot-measure-committees/";
-   flags=["Identify the measure and election","Confirm the filing jurisdiction","Confirm funding and committee status"];
+   flags=[
+     "Identify the measure and election",
+     "Confirm the filing jurisdiction",
+     "Confirm funding and committee status"
+   ];
  } else {
-   flags=["Confirm committee purpose and targets","Confirm filing jurisdiction","Confirm funding structure"];
+   flags=[
+     "Confirm committee purpose and targets",
+     "Confirm filing jurisdiction",
+     "Confirm funding structure"
+   ];
  }
+
  const name=a.name||"Your organization";
- const areaLabel={state:"California",county:"One county",city:"One city",unsure:"Needs confirmation"}[a.area]||"Needs confirmation";
+ const areaLabel={
+   state:"California",
+   county:"One county",
+   city:"One city",
+   unsure:"Needs confirmation"
+ }[a.area]||"Needs confirmation";
+
  document.getElementById("questionMount").innerHTML=`
- <div class="resultHero"><div class="resultKicker">✦ Your preliminary launch plan</div><h2>You’re ready for the next step.</h2><p>PAC Magic turned your answers into a starting point. The point is not to hide uncertainty—it’s to show you exactly where it exists.</p></div>
- <div class="resultGrid">
-  <div class="resultCard"><h3>YOUR COMMITTEE</h3><div class="meta"><div><span>Name</span><b>${escapeHtml(name)}</b></div><div><span>Likely pathway</span><b>${structure}</b></div><div><span>Jurisdiction focus</span><b>${areaLabel}</b></div><div><span>Status</span><b><span class="pill">Ready for review</span></b></div></div><div class="info"><b>Why this recommendation?</b><br>${rationale}</div></div>
-  <div class="resultCard"><h3>YOUR LAUNCH PACKAGE</h3>
-   ${["Committee structure recommendation","Registration information to gather","Treasurer / responsible-officer information","Initial filing preparation","Personalized compliance checklist","Reporting-calendar setup","Disclosure and independent-expenditure review"].map(x=>`<div class="check"><span class="checkMark">✓</span><span>${x}</span></div>`).join("")}
-  </div>
-  <div class="resultCard"><h3>REVIEW BEFORE YOU FILE</h3><div class="notice">PAC Magic is not making a legal determination here. These are the items your answers suggest should be confirmed before relying on the plan.</div>
-   <div style="margin-top:12px">${flags.map(x=>`<div class="check"><span class="checkMark" style="background:#fff4cf;color:#806400">!</span><span>${x}</span></div>`).join("")}</div>
-  </div>
-  <div class="resultCard"><h3>WHAT HAPPENS NEXT</h3><div class="actions" style="margin-top:0"><button class="primary" onclick="alert('Launch-package generation is the next MVP layer. This demo has captured the inputs needed to generate it.')">✦ Generate my launch package</button><button class="secondary" onclick="alert('Attorney-review routing is planned for the next MVP layer.')">Request attorney review</button></div></div>
-  <div class="resultCard"><h3>AUTHORITATIVE SOURCE</h3><div class="source">This prototype uses California FPPC guidance for the concepts demonstrated above. Production rules should be versioned, traceable and independently maintained.<br><br><a href="${source}" target="_blank" rel="noopener">Open the relevant FPPC guidance →</a></div></div>
+ <div class="resultHero">
+   <div class="resultKicker">✦ Your preliminary launch plan</div>
+   <h2>You’re ready for the next step.</h2>
+   <p>PAC Magic turned your answers into a starting point. The point is not to hide uncertainty—it’s to show you exactly where it exists.</p>
  </div>
- <div class="actions" style="justify-content:center;margin-top:24px"><button class="secondary" onclick="exitApp()">Return to PAC Magic</button></div>`;
+
+ <div class="resultGrid">
+
+  <div class="resultCard">
+   <h3>YOUR COMMITTEE</h3>
+   <div class="meta">
+    <div><span>Name</span><b>${escapeHtml(name)}</b></div>
+    <div><span>Likely pathway</span><b>${structure}</b></div>
+    <div><span>Jurisdiction focus</span><b>${areaLabel}</b></div>
+    <div><span>Status</span><b><span class="pill">Ready for review</span></b></div>
+   </div>
+   <div class="info">
+    <b>Why this recommendation?</b><br>${rationale}
+   </div>
+  </div>
+
+  <div class="resultCard">
+   <h3>YOUR LAUNCH PACKAGE</h3>
+   ${[
+     "Committee structure recommendation",
+     "Registration information to gather",
+     "Treasurer / responsible-officer information",
+     "Initial filing preparation",
+     "Personalized compliance checklist",
+     "Reporting-calendar setup",
+     "Disclosure and independent-expenditure review"
+   ].map(x=>`
+     <div class="check">
+       <span class="checkMark">✓</span>
+       <span>${x}</span>
+     </div>
+   `).join("")}
+  </div>
+
+  <div class="resultCard">
+   <h3>REVIEW BEFORE YOU FILE</h3>
+   <div class="notice">
+     PAC Magic is not making a legal determination here. These are the items your answers suggest should be confirmed before relying on the plan.
+   </div>
+
+   <div style="margin-top:12px">
+    ${flags.map(x=>`
+      <div class="check">
+       <span class="checkMark" style="background:#fff4cf;color:#806400">!</span>
+       <span>${x}</span>
+      </div>
+    `).join("")}
+   </div>
+  </div>
+
+  <div class="resultCard">
+   <h3>WHAT HAPPENS NEXT</h3>
+   <div class="actions" style="margin-top:0">
+    <button class="primary" onclick="startCheckout()">✦ Get my Launch Package — $299</button>
+    <button class="secondary" onclick="alert('Attorney-review routing is planned for the next MVP layer.')">Request attorney review</button>
+   </div>
+  </div>
+
+  <div class="resultCard">
+   <h3>AUTHORITATIVE SOURCE</h3>
+   <div class="source">
+    This prototype uses California FPPC guidance for the concepts demonstrated above. Production rules should be versioned, traceable and independently maintained.
+    <br><br>
+    <a href="${source}" target="_blank" rel="noopener">Open the relevant FPPC guidance →</a>
+   </div>
+  </div>
+
+ </div>
+
+ <div class="actions" style="justify-content:center;margin-top:24px">
+   <button class="secondary" onclick="exitApp()">← Return to PAC Magic</button>
+ </div>`;
 }
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+
 function startCheckout(){
-  window.location.href = "https://buy.stripe.com/test_aFaaEZ4Tx6KV2Oneu61Jm00";
+  window.location.href = "https://buy.stripe.com/aFaaEZ4Tx6KV2Oneu61Jm00";
 }
 
 function renderPostPayment(){
@@ -392,6 +475,10 @@ function renderPostPayment(){
         </div>
 
       </div>
+
+      <div class="actions" style="justify-content:center;margin-top:24px">
+        <button class="secondary" onclick="exitApp()">Return to PAC Magic</button>
+      </div>
     </div>
   `;
 
@@ -401,6 +488,7 @@ function renderPostPayment(){
 if(new URLSearchParams(window.location.search).get("success")==="1"){
   window.addEventListener("DOMContentLoaded",renderPostPayment);
 }
+
 </script>
 </body>
 </html>
